@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="galeria">
+
+        <div class="item">
+            <img src="./img/joyb.png" alt="Landing Page JoyB">
+        </div>
+
+        <div class="item">
+            <img src="./img/chanes.png" alt="Landing Page Autoral Moema">
+        </div>
+
+        <div class="item">
+            <img src="./img/pinheiros.png" alt="Landing Page Pinheiros">
+        </div>
+
+        <div class="item">
+            <img src="./img/Pokedex.png" alt="Página e App para a Pokédex">
+        </div>
+
+    </div>
+</body>
+</html>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+        background-color: #023;
+    }
+    .galeria {
+        padding: 20vmax;
+        height: 140vmax;
+        width: 140vmax;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    .item {
+        border-radius: 2vmax;
+        position: absolute;
+        transition: transform 800ms ease;
+    }
+    .item:hover {
+        transform: scale(1.1);
+    }
+    .item:hover > img {
+        opacity: 1;
+        transform: scale(1.01);
+    }
+    .item > img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: inherit;
+        opacity: 0;
+        transition: opacity 800ms ease,
+            transform 800ms ease;
+    }
+    .item:nth-child(1) {
+        background-color: rgb(255, 238, 88);
+        height: 10%;
+        width: 21%;
+        left: 10%;
+        top: 5%;
+    }
+    .item:nth-child(2) {
+        background-color: rgb(63, 206, 187);
+        height: 10%;
+        width: 18%;
+        left: 36%;
+        top: 17%;
+    }
+    .item:nth-child(3) {
+        background-color: rgb(204, 66, 204);
+        height: 10%;
+        width: 18%;
+        left: 52%;
+        top: 4%;
+    }
+    .item:nth-child(4) {
+        background-color: rgb(235, 103, 98);
+        height: 12%;
+        width: 24%;
+        left: 10%;
+        top: 23%;
+    }
+</style>
+
+<script>
+    const galeria = document.querySelector(".galeria")
+    window.onmousemove = e => {
+        const mouseX = e.clientX,
+                    mouseY = e.clientY;
+
+        const decimalX = mouseX / window.innerWidth,
+                    decimalY = mouseY / window.innerHeight;
+
+        const maxX = galeria.offsetWidth - window.innerWidth,
+                    maxY = galeria.offsetHeight - window.innerHeight;
+
+        const multX = maxX * decimalX * -1,
+                    multY = maxY * decimalY * -1;
+
+        galeria.animate({
+            transform: `translate(${multX}px, ${multY}px)`
+        }, {
+            duration: 4000,
+            fill: "forwards",
+            easing: "ease"
+        }) 
+    }
+</script>
